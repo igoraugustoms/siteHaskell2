@@ -90,9 +90,6 @@ auxProdutoR rt produto = do
                         <nav>
                             <ul>
                                 <li>
-                                    <a href=@{ProdutoR}>
-                                        Cadastro de livros
-                                <li>
                                     <a href=@{ListProdR}>
                                         Listar livros
                                 <li>
@@ -138,38 +135,35 @@ getDescR pid = do
     produto <- runDB $ get404 pid
     (widget,_) <- generateFormPost formQt
     sess <- lookupSession "_EMAIL"
-      
+    
     defaultLayout [whamlet|
-        <body>
-                <header>
-                    <div class="caixa">
-                        <h1>
+        <body style="background-color: RGB(169,169,169);">
+                <header style="background: #BBBBBB; padding: 20px 0;">
+                    <div class="caixa" style="position: relative; width: 940px; margin: 0 auto;">
+                        <h1 style="color:red;">
                             Livraria Fatecana
 
-                        <nav>
+                        <nav style="position: absolute; top: 110px; right: 0;">
                             <ul>
-                                <li>
-                                    <a href=@{ProdutoR}>
-                                        Cadastro de livros
-                                <li>
-                                    <a href=@{ListProdR}>
+                                <li style="display: inline; margin: 0 0 0 15px;">
+                                    <a href=@{ListProdR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
                                         Listar livros
-                                <li>
-                                    <a href=@{UsuarioR}>
+                                <li style="display: inline; margin: 0 0 0 15px;">
+                                    <a href=@{UsuarioR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
                                         Cadastro de usuarios
-                                <li>
-                                    <a href=@{ListCompraR}>
+                                <li style="display: inline; margin: 0 0 0 15px;">
+                                    <a href=@{ListCompraR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
                                         Minhas compras
 
                                 $maybe email <- sess
-                                    <li>
+                                    <li style="display: inline; margin: 0 0 0 15px;">
                                         <div>
                                             #{email}
                                             <form method=post action=@{SairR}>
                                                 <input type="submit" value="Sair">
                                 $nothing
-                                    <li>
-                                        <a href=@{EntrarR}>
+                                    <li style="display: inline; margin: 0 0 0 15px;">
+                                        <a href=@{EntrarR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
                                             LOGIN
             <h2>
                 Nome: #{produtoNome produto}
@@ -191,37 +185,36 @@ getListProdR = do
     produtos <- runDB $ selectList [] [Desc ProdutoPreco]
     sess <- lookupSession "_EMAIL"
     defaultLayout [whamlet|
-        <body>
-            <header>
-                <div class="caixa">
-                    <h1>
-                        Livraria Fatecana
+        <body style="background-color: RGB(169,169,169);">
+                <header style="background: #BBBBBB; padding: 20px 0;">
+                    <div class="caixa" style="position: relative; width: 940px; margin: 0 auto;">
+                        <h1 style="color:red;">
+                            Livraria Fatecana
 
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href=@{ProdutoR}>
-                                    Cadastro de livros
-                            <li>
-                                <a href=@{ListProdR}>
-                                    Listar livros
-                            <li>
-                                <a href=@{UsuarioR}>
-                                    Cadastro de usuarios
-                            <li>
-                                <a href=@{ListCompraR}>
-                                    Minhas compras
+                        <nav style="position: absolute; top: 110px; right: 0;">
+                            <ul>
+                                <li style="display: inline; margin: 0 0 0 15px;">
+                                    <a href=@{ListProdR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
+                                        Listar livros
+                                <li style="display: inline; margin: 0 0 0 15px;">
+                                    <a href=@{UsuarioR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
+                                        Cadastro de usuarios
+                                <li style="display: inline; margin: 0 0 0 15px;">
+                                    <a href=@{ListCompraR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
+                                        Minhas compras
 
-                            $maybe email <- sess
-                                <li>
-                                    <div>
-                                        #{email}
-                                        <form method=post action=@{SairR}>
-                                            <input type="submit" value="Sair">
-                            $nothing
-                                <li>
-                                    <a href=@{EntrarR}>
-                                        LOGIN
+                                $maybe email <- sess
+                                    <li style="display: inline; margin: 0 0 0 15px;">
+                                        <div>
+                                            #{email}
+                                            <form method=post action=@{SairR}>
+                                                <input type="submit" value="Sair">
+                                $nothing
+                                    <li style="display: inline; margin: 0 0 0 15px;">
+                                        <a href=@{EntrarR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
+                                            LOGIN
+            <h2 style="color: red; font-size: 20px">
+                Lista de Livros disponiveis 
             <table>
                 <thead>
                     <tr>

@@ -28,43 +28,40 @@ getListCompraR = do
                      defaultLayout $ do 
 
                         [whamlet|
-                            <body>
-                              <header>
-                                  <div class="caixa">
-                                      <h1>
+                            <body style="background-color: RGB(169,169,169);">
+                              <header style="background: #BBBBBB; padding: 20px 0;">
+                                  <div class="caixa" style="position: relative; width: 940px; margin: 0 auto;">
+                                      <h1 style="color: red">
                                           Livraria Fatecana
 
-                                      <nav>
+                                      <nav style="position: absolute; top: 110px; right: 0;">
                                           <ul>
-                                              <li>
-                                                  <a href=@{ProdutoR}>
-                                                      Cadastro de livros
-                                              <li>
-                                                  <a href=@{ListProdR}>
+                                              <li style="display: inline; margin: 0 0 0 15px;">
+                                                  <a href=@{ListProdR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
                                                       Listar livros
-                                              <li>
-                                                  <a href=@{UsuarioR}>
+                                              <li style="display: inline; margin: 0 0 0 15px;">
+                                                  <a href=@{UsuarioR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
                                                       Cadastro de usuarios
-                                              <li>
-                                                  <a href=@{ListCompraR}>
+                                              <li style="display: inline; margin: 0 0 0 15px;">
+                                                  <a href=@{ListCompraR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
                                                       Minhas compras
 
                                               $maybe email <- sess
-                                                  <li>
+                                                  <li style="display: inline; margin: 0 0 0 15px;">
                                                       <div>
                                                           #{email}
                                                           <form method=post action=@{SairR}>
                                                               <input type="submit" value="Sair">
                                               $nothing
-                                                  <li>
+                                                  <li style="display: inline; margin: 0 0 0 15px;">
                                                       <a href=@{EntrarR}>
                                                           LOGIN                        
-                                <h2>
-                                    COMPRAS de #{usuarioNome usuario}
+                                <h2 style="color: red">
+                                    Compras de #{usuarioNome usuario}
                                 
                                 <ul>
                                     $forall (Entity _ _, Entity _ compra, Entity _ produto) <- produtos
-                                        <li>
+                                        <li style="font-size: 20px">
                                             #{produtoNome produto}: #{produtoPreco produto * (fromIntegral (compraQtunit compra))}
         |]
 

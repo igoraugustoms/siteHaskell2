@@ -28,6 +28,7 @@ instance Yesod App where
     isAuthorized UsuarioR _ = return Authorized
     isAuthorized EntrarR _ = return Authorized
     isAuthorized AdminR _ = isAdmin
+    isAuthorized ProdutoR _ = isAdmin
     isAuthorized _ _ = isUsuario 
     makeLogger = return . appLogger
 
@@ -37,7 +38,7 @@ isAdmin = do
     case sess of 
         Nothing -> return AuthenticationRequired
         Just "admin@admin.com" -> return Authorized
-        Just _ -> return $ Unauthorized "VC NAO TEM PERMISSAO PARA ACESSAR ESTA PAGINA"
+        Just _ -> return $ Unauthorized "VOCE NAO TEM PERMISSAO PARA ACESSAR ESTA PAGINA"
 
 isUsuario :: Handler AuthResult
 isUsuario = do 

@@ -83,9 +83,6 @@ getEntrarR = do
                         <nav>
                             <ul>
                                 <li>
-                                    <a href=@{ProdutoR}>
-                                        Cadastro de livros
-                                <li>
                                     <a href=@{ListProdR}>
                                         Listar livros
                                 <li>

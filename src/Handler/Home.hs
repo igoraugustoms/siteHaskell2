@@ -26,7 +26,7 @@ getHomeR = defaultLayout $ do
 
             .caixa {
                 position: relative;
-                width: 1200px;
+                width: 940px;
                 margin: 0 auto;
             }
 
@@ -60,7 +60,7 @@ getHomeR = defaultLayout $ do
 
             .nome{
                 position: absolute;
-                left: 900px;
+                left: 800px;
                 top: 100px;
                 color: red;
             }
@@ -80,9 +80,6 @@ getHomeR = defaultLayout $ do
 
                     <nav>
                         <ul>
-                            <li>
-                                <a href=@{ProdutoR}>
-                                    Cadastro de livros
                             <li>
                                 <a href=@{ListProdR}>
                                     Listar livros
