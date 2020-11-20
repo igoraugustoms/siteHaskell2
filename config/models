@@ -1,5 +1,6 @@
 Produto
     nome Text
+    autor Text
     preco Double
     deriving Show
 
