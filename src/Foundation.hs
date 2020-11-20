@@ -37,7 +37,7 @@ isAdmin = do
     case sess of 
         Nothing -> return AuthenticationRequired
         Just "admin@admin.com" -> return Authorized
-        Just _ -> return $ Unauthorized "VC EH USUARIO COMUM"
+        Just _ -> return $ Unauthorized "VC NAO TEM PERMISSAO PARA ACESSAR ESTA PAGINA"
 
 isUsuario :: Handler AuthResult
 isUsuario = do 
