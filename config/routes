@@ -12,7 +12,7 @@
 /produto/#ProdutoId/del      DelProdR  POST
 
 /usuario                    UsuarioR   GET POST
-
+/usuarios                   ListUsuR  GET
 /login                      EntrarR    GET POST
 /logout                     SairR      POST
 
