@@ -26,14 +26,88 @@ getUsuarioR = do
     defaultLayout $ do 
         toWidgetHead $(luciusFile  "templates/form.lucius")
         addStylesheet (StaticR css_bootstrap_css)
+        sess <- lookupSession "_EMAIL"
         toWidgetHead [lucius|
-            h1 {
-                color : red;
-            }
-            
-            body{
-                background-color: RGB(169,169,169);
-            }
+                header {
+                    background: #BBBBBB;
+                    padding: 20px 0;
+                }
+
+                h1 {
+                    color : red;
+                }
+
+                .caixa {
+                    position: relative;
+                    width: 940px;
+                    margin: 0 auto;
+                }
+
+                nav {
+                    position: absolute;
+                    top: 110px;
+                    right: 0;
+                }
+
+                nav li {
+                    display: inline;
+                    margin: 0 0 0 15px;
+                }
+
+                nav a {
+                    text-transform: uppercase;
+                    color: #000000;
+                    font-weight: bold;
+                    font-size: 22px;
+                    text-decoration: none;
+                }
+
+                nav a:hover {
+                    color: #C78C19;
+                    text-decoration: underline;
+                }
+
+                body{
+                    background-color: RGB(80,80,80);
+                    }
+                h1 {
+                    color : red;
+                }
+                
+                body{
+                    background-color: RGB(169,169,169);
+                }
+        |]
+        [whamlet|
+            <body>
+                <header>
+                    <div class="caixa">
+                        <h1>
+                            Livraria Fatecana
+
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href=@{ProdutoR}>
+                                        Cadastro de livros
+                                <li>
+                                    <a href=@{ListProdR}>
+                                        Listar livros
+                                <li>
+                                    <a href=@{UsuarioR}>
+                                        Cadastro de usuarios
+                                $maybe email <- sess
+                                    <li>
+                                        <div>
+                                            #{email}
+                                            <form method=post action=@{SairR}>
+                                                <input type="submit" value="Sair">
+                                $nothing
+                                    <li>
+                                        <a href=@{EntrarR}>
+                                            LOGIN
+
+
         |]
         geraForm UsuarioR "CADASTRO DE USUARIO" "Cadastrar" msg widget
 

@@ -15,64 +15,94 @@ getHomeR = defaultLayout $ do
     addStylesheet (StaticR css_bootstrap_css)
     sess <- lookupSession "_EMAIL"
     toWidgetHead [lucius|
+            header {
+                background: #BBBBBB;
+                padding: 20px 0;
+            }
+
             h1 {
                 color : red;
             }
-            #menu ul {
-                padding:0px;
-                margin:0px;
-                background-color:#EDEDED;
-                list-style:none;
+
+            .caixa {
+                position: relative;
+                width: 940px;
+                margin: 0 auto;
             }
 
-            #menu ul li { display: inline; }
+            nav {
+                position: absolute;
+                top: 110px;
+                right: 0;
+            }
 
-            #menu ul li a {
-                padding: 2px 10px;
-                display: inline-block;
+            nav li {
+                display: inline;
+                margin: 0 0 0 15px;
+            }
 
-                
-                background-color:#EDEDED;
-                color: #333;
+            nav a {
+                text-transform: uppercase;
+                color: #000000;
+                font-weight: bold;
+                font-size: 22px;
                 text-decoration: none;
-                border-bottom:3px solid #EDEDED;
+            }
+
+            nav a:hover {
+                color: #C78C19;
+                text-decoration: underline;
             }
 
             body{
                 background-color: RGB(80,80,80);
             }
+
+            .nome{
+                position: absolute;
+                left: 800px;
+                top: 100px;
+                color: red;
+            }
+
+            .imagem{
+                position: absolute;
+                left: 100px;
+                top: 230px;
+            }
         |]
     [whamlet|
-        <nav id="menu">
-            <h1>
-                LIVRARIA FATECANA
-            
-            <ul>
-                <li> 
-                    <a href=@{ProdutoR}>
-                        CADASTRO DE LIVROS
+        <body>
+            <header>
+                <div class="caixa">
+                    <h1>
+                        Livraria Fatecana
 
-                <li>
-                    <a href=@{ListProdR}>
-                        LISTAR LIVROS
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href=@{ProdutoR}>
+                                    Cadastro de livros
+                            <li>
+                                <a href=@{ListProdR}>
+                                    Listar livros
+                            <li>
+                                <a href=@{UsuarioR}>
+                                    Cadastro de usuarios
+                            $maybe email <- sess
+                                <li>
+                                    <div class="nome">
+                                        #{email}
+                                        <form method=post action=@{SairR}>
+                                            <input type="submit" value="Sair da sessão">
+                            $nothing
+                                <li>
+                                    <a href=@{EntrarR}>
+                                        LOGIN
 
-                <li>
-                    <a href=@{UsuarioR}>
-                        CADASTRO DE USUARIOS
-
-            
-                $maybe email <- sess
-                    <li>
-                        <div>
-                            #{email}
-                            <form method=post action=@{SairR}>
-                                <input type="submit" value="Sair">
-                $nothing
-                    <li>
-                        <a href=@{EntrarR}>
-                            LOGIN
-
-        <img src=@{StaticR img_produto_jpg}>
+            <body>
+                <div class="imagem">
+                    <img src=@{StaticR img_produto_jpg}>
 
 
     |]
