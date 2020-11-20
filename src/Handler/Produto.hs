@@ -41,7 +41,7 @@ auxProdutoR rt produto = do
 
                 .caixa {
                     position: relative;
-                    width: 940px;
+                    width: 1200px;
                     margin: 0 auto;
                 }
 
@@ -98,6 +98,10 @@ auxProdutoR rt produto = do
                                 <li>
                                     <a href=@{UsuarioR}>
                                         Cadastro de usuarios
+                                <li>
+                                    <a href=@{ListCompraR}>
+                                        Minhas compras
+
                                 $maybe email <- sess
                                     <li>
                                         <div>
@@ -153,6 +157,10 @@ getDescR pid = do
                                 <li>
                                     <a href=@{UsuarioR}>
                                         Cadastro de usuarios
+                                <li>
+                                    <a href=@{ListCompraR}>
+                                        Minhas compras
+
                                 $maybe email <- sess
                                     <li>
                                         <div>
@@ -200,6 +208,10 @@ getListProdR = do
                             <li>
                                 <a href=@{UsuarioR}>
                                     Cadastro de usuarios
+                            <li>
+                                <a href=@{ListCompraR}>
+                                    Minhas compras
+
                             $maybe email <- sess
                                 <li>
                                     <div>

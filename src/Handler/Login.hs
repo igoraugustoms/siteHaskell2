@@ -34,7 +34,7 @@ getEntrarR = do
 
                 .caixa {
                     position: relative;
-                    width: 940px;
+                    width: 1200px;
                     margin: 0 auto;
                 }
 
@@ -91,6 +91,10 @@ getEntrarR = do
                                 <li>
                                     <a href=@{UsuarioR}>
                                         Cadastro de usuarios
+                                <li>
+                                    <a href=@{ListCompraR}>
+                                        Minhas compras
+
                                 $maybe email <- sess
                                     <li>
                                         <div>

@@ -45,6 +45,10 @@ getListCompraR = do
                                               <li>
                                                   <a href=@{UsuarioR}>
                                                       Cadastro de usuarios
+                                              <li>
+                                                  <a href=@{ListCompraR}>
+                                                      Minhas compras
+
                                               $maybe email <- sess
                                                   <li>
                                                       <div>
