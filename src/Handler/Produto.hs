@@ -295,8 +295,7 @@ getListProdAdminR = do
                     $forall Entity pid prod <- produtos
                         <tr>
                             <td>
-                                <a href=@{DescR pid}>
-                                    #{produtoNome prod}
+                                #{produtoNome prod}
                             
                             <td>
                                 #{produtoAutor prod}
