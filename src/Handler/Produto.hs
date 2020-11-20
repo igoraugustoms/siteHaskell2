@@ -181,15 +181,46 @@ getListProdR :: Handler Html
 getListProdR = do 
     -- produtos :: [Entity Produto]
     produtos <- runDB $ selectList [] [Desc ProdutoPreco]
+    sess <- lookupSession "_EMAIL"
     defaultLayout [whamlet|
+        <body>
+            <header>
+                <div class="caixa">
+                    <h1>
+                        Livraria Fatecana
+
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href=@{ProdutoR}>
+                                    Cadastro de livros
+                            <li>
+                                <a href=@{ListProdR}>
+                                    Listar livros
+                            <li>
+                                <a href=@{UsuarioR}>
+                                    Cadastro de usuarios
+                            $maybe email <- sess
+                                <li>
+                                    <div>
+                                        #{email}
+                                        <form method=post action=@{SairR}>
+                                            <input type="submit" value="Sair">
+                            $nothing
+                                <li>
+                                    <a href=@{EntrarR}>
+                                        LOGIN
             <table>
                 <thead>
                     <tr>
                         <th> 
-                            Nome
+                            Livro
                         
                         <th>
-                            Produto
+                            Autor
+
+                        <th>
+                            Valor
                         
                         <th>
                         
@@ -202,8 +233,11 @@ getListProdR = do
                                     #{produtoNome prod}
                             
                             <td>
-                                #{produtoPreco prod}
+                                #{produtoAutor prod}
                             
+                            <td>
+                                #{produtoPreco prod}
+
                             <th>
                                 <a href=@{UpdProdR pid}>
                                     Editar

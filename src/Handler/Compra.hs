@@ -26,14 +26,42 @@ getListCompraR = do
                         \ WHERE usuario.id = ?"
                      produtos <- runDB $ rawSql sql [toPersistValue uid] :: Handler [(Entity Usuario,Entity Compra,Entity Produto)]
                      defaultLayout $ do 
+
                         [whamlet|
-                            <h1>
-                                COMPRAS de #{usuarioNome usuario}
-                            
-                            <ul>
-                                $forall (Entity _ _, Entity _ compra, Entity _ produto) <- produtos
-                                    <li>
-                                        #{produtoNome produto}: #{produtoPreco produto * (fromIntegral (compraQtunit compra))}
+                            <body>
+                              <header>
+                                  <div class="caixa">
+                                      <h1>
+                                          Livraria Fatecana
+
+                                      <nav>
+                                          <ul>
+                                              <li>
+                                                  <a href=@{ProdutoR}>
+                                                      Cadastro de livros
+                                              <li>
+                                                  <a href=@{ListProdR}>
+                                                      Listar livros
+                                              <li>
+                                                  <a href=@{UsuarioR}>
+                                                      Cadastro de usuarios
+                                              $maybe email <- sess
+                                                  <li>
+                                                      <div>
+                                                          #{email}
+                                                          <form method=post action=@{SairR}>
+                                                              <input type="submit" value="Sair">
+                                              $nothing
+                                                  <li>
+                                                      <a href=@{EntrarR}>
+                                                          LOGIN                        
+                                <h2>
+                                    COMPRAS de #{usuarioNome usuario}
+                                
+                                <ul>
+                                    $forall (Entity _ _, Entity _ compra, Entity _ produto) <- produtos
+                                        <li>
+                                            #{produtoNome produto}: #{produtoPreco produto * (fromIntegral (compraQtunit compra))}
         |]
 
 postComprarR :: ProdutoId -> Handler Html
