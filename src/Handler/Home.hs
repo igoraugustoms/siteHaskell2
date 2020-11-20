@@ -26,7 +26,7 @@ getHomeR = defaultLayout $ do
 
             .caixa {
                 position: relative;
-                width: 940px;
+                width: 1200px;
                 margin: 0 auto;
             }
 
@@ -60,7 +60,7 @@ getHomeR = defaultLayout $ do
 
             .nome{
                 position: absolute;
-                left: 800px;
+                left: 900px;
                 top: 100px;
                 color: red;
             }
@@ -89,6 +89,9 @@ getHomeR = defaultLayout $ do
                             <li>
                                 <a href=@{UsuarioR}>
                                     Cadastro de usuarios
+                            <li>
+                                <a href=@{ListCompraR}>
+                                    Minhas compras
                             $maybe email <- sess
                                 <li>
                                     <div class="nome">
