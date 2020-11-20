@@ -4,13 +4,13 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE QuasiQuotes #-}
-module Handler.Home where
+module Handler.Logado where
 
 import Import
 import Database.Persist.Postgresql
 
-getHomeR :: Handler Html
-getHomeR = defaultLayout $ do 
+getLogadoR :: Handler Html
+getLogadoR = defaultLayout $ do 
     addStylesheet (StaticR css_bootstrap_css)
     sess <- lookupSession "_EMAIL"
     [whamlet|
@@ -27,11 +27,6 @@ getHomeR = defaultLayout $ do
             <li> 
                 <a href=@{UsuarioR}>
                     CADASTRO DE USUARIO
-
-            <li>
-                <a href=@{ListProdR}>
-                    LISTAR
-
 
 
     |]

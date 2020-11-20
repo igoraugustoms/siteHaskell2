@@ -36,7 +36,7 @@ postEntrarR = do
                 Nothing -> do 
                     setMessage [shamlet|
                         <div>
-                            E-mail N ENCONTRADO!
+                            E-mail NAO ENCONTRADO!
                     |]
                     redirect EntrarR
                 Just (Entity _ usu) -> do 
@@ -59,6 +59,14 @@ postSairR = do
 getAdminR :: Handler Html
 getAdminR = defaultLayout $ do
     [whamlet|
-            <h1>
-                BEM-VINDO ADMIN
+        <h1>
+            SISTEMA DA LIVRARIA
+        <ul>
+            <li> 
+                <a href=@{ProdutoR}>
+                    CADASTRO
+
+            <li>
+                <a href=@{ListProdR}>
+                    LISTAR
     |]
