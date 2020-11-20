@@ -55,6 +55,11 @@ getHomeR = defaultLayout $ do
                 <li>
                     <a href=@{ListProdR}>
                         LISTAR LIVROS
+
+                <li>
+                    <a href=@{UsuarioR}>
+                        CADASTRO DE USUARIOS
+
             
                 $maybe email <- sess
                     <li>

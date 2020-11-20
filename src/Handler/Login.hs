@@ -20,6 +20,16 @@ getEntrarR = do
     (widget,_) <- generateFormPost formLogin
     msg <- getMessage
     defaultLayout $ do 
+        addStylesheet (StaticR css_bootstrap_css)
+        toWidgetHead [lucius|
+            h1 {
+                color : red;
+            }
+            
+            body{
+                background-color: RGB(80,80,80);
+            }
+        |]
         geraForm EntrarR "ENTRAR" "Login" msg widget
 
 postEntrarR :: Handler Html

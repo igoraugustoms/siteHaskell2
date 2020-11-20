@@ -28,7 +28,7 @@ auxProdutoR rt produto = do
     defaultLayout $ do
         [whamlet|
             <h1>
-                 CADASTRO DE PRODUTO
+                 CADASTRO DE LIVRO
             
             <form action=@{rt} method=post>
                 ^{widget}
