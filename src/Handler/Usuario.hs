@@ -15,6 +15,7 @@ formUsu = renderBootstrap $ (,)
     <$> (Usuario 
         <$> areq textField "Nome: " Nothing
         <*> areq emailField "E-mail: " Nothing
+        <*> areq textField "Endereco: " Nothing
         <*> areq passwordField "Senha: " Nothing)
     <*> areq passwordField "Digite Novamente: " Nothing
 
@@ -24,6 +25,16 @@ getUsuarioR = do
     msg <- getMessage
     defaultLayout $ do 
         toWidgetHead $(luciusFile  "templates/form.lucius")
+        addStylesheet (StaticR css_bootstrap_css)
+        toWidgetHead [lucius|
+            h1 {
+                color : red;
+            }
+            
+            body{
+                background-color: RGB(169,169,169);
+            }
+        |]
         geraForm UsuarioR "CADASTRO DE USUARIO" "Cadastrar" msg widget
 
 postUsuarioR :: Handler Html

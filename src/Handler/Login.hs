@@ -27,7 +27,7 @@ getEntrarR = do
             }
             
             body{
-                background-color: RGB(80,80,80);
+                background-color: RGB(169,169,169);
             }
         |]
         geraForm EntrarR "ENTRAR" "Login" msg widget

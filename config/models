@@ -11,6 +11,7 @@ Compra
 Usuario
     nome  Text
     email Text
+    end Text
     senha Text
     UniqueEmail email
     deriving Show
