@@ -157,7 +157,7 @@ getAdminR = defaultLayout $ do
 
         .caixa {
             position: relative;
-            width: 800px;
+            width: 1200px;
             margin: 0 auto;
         }
 
@@ -214,6 +214,10 @@ getAdminR = defaultLayout $ do
                             <li>
                                 <a href=@{UsuarioR}>
                                     Cadastro de usuarios
+                            <li>
+                                <a href=@{ListUsuR}>
+                                    Usuarios cadastrados
+
                             $maybe email <- sess
                                 <li>
                                     <div>

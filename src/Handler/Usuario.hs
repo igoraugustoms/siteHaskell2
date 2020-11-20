@@ -189,4 +189,14 @@ getListUsuR = do
                             
                             <td>
                                 #{usuarioEnd usu}
+
+                            <th>
+                                <form action=@{DelUsuR uid} method=post>
+                                    <input type="submit" value="X">
     |]
+
+postDelUsuR :: UsuarioId -> Handler Html
+postDelUsuR uid = do 
+    _ <- runDB $ get404 uid 
+    runDB $ delete uid 
+    redirect ListUsuR

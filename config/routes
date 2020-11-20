@@ -13,6 +13,7 @@
 
 /usuario                    UsuarioR   GET POST
 /usuarios                   ListUsuR  GET
+/usuario/#UsuarioId/del      DelUsuR  POST
 /login                      EntrarR    GET POST
 /logout                     SairR      POST
 
