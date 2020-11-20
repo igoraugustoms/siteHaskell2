@@ -214,7 +214,68 @@ getListProdR = do
                                         <a href=@{EntrarR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
                                             LOGIN
             <h2 style="color: red; font-size: 20px">
-                Lista de Livros disponiveis 
+                Lista de livros disponiveis 
+            <table>
+                <thead>
+                    <tr>
+                        <th> 
+                            Livro
+                        
+                        <th>
+                            Autor
+
+                        <th>
+                            Valor
+                <tbody>
+                    $forall Entity pid prod <- produtos
+                        <tr>
+                            <td>
+                                <a href=@{DescR pid}>
+                                    #{produtoNome prod}
+                            
+                            <td>
+                                #{produtoAutor prod}
+                            
+                            <td>
+                                #{produtoPreco prod}
+    |]
+
+getListProdAdminR :: Handler Html
+getListProdAdminR = do 
+    -- produtos :: [Entity Produto]
+    produtos <- runDB $ selectList [] [Desc ProdutoPreco]
+    sess <- lookupSession "_EMAIL"
+    defaultLayout [whamlet|
+        <body style="background-color: RGB(169,169,169);">
+                <header style="background: #BBBBBB; padding: 20px 0;">
+                    <div class="caixa" style="position: relative; width: 940px; margin: 0 auto;">
+                        <h1 style="color:red;">
+                            Livraria Fatecana
+
+                        <nav style="position: absolute; top: 110px; right: 0;">
+                            <ul>
+                                <li style="display: inline; margin: 0 0 0 15px;">
+                                    <a href=@{ListProdR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
+                                        Listar livros
+                                <li style="display: inline; margin: 0 0 0 15px;">
+                                    <a href=@{UsuarioR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
+                                        Cadastro de usuarios
+                                <li style="display: inline; margin: 0 0 0 15px;">
+                                    <a href=@{ListCompraR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
+                                        Minhas compras
+
+                                $maybe email <- sess
+                                    <li style="display: inline; margin: 0 0 0 15px;">
+                                        <div>
+                                            #{email}
+                                            <form method=post action=@{SairR}>
+                                                <input type="submit" value="Sair">
+                                $nothing
+                                    <li style="display: inline; margin: 0 0 0 15px;">
+                                        <a href=@{EntrarR} style="text-transform: uppercase; color: #000000; font-weight: bold; font-size: 22px; text-decoration: none;">
+                                            LOGIN
+            <h2 style="color: red; font-size: 20px">
+                Lista de livros disponiveis 
             <table>
                 <thead>
                     <tr>

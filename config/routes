@@ -7,6 +7,7 @@
 /produto                    ProdutoR   GET POST
 /produto/#ProdutoId/descr   DescR      GET
 /produtos                   ListProdR  GET
+/produtosAdmin                   ListProdAdminR  GET
 /produto/#ProdutoId/modifica UpdProdR  GET POST
 /produto/#ProdutoId/del      DelProdR  POST
 

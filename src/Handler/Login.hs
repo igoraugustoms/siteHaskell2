@@ -209,7 +209,7 @@ getAdminR = defaultLayout $ do
                                 <a href=@{ProdutoR}>
                                     Cadastro de livros
                             <li>
-                                <a href=@{ListProdR}>
+                                <a href=@{ListProdAdminR}>
                                     Listar livros
                             <li>
                                 <a href=@{UsuarioR}>

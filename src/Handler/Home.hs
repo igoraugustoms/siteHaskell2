@@ -103,6 +103,5 @@ getHomeR = defaultLayout $ do
             <body>
                 <div class="imagem">
                     <img src=@{StaticR img_produto_jpg}>
-
-
+                
     |]
